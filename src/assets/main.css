@@ -1,35 +1,115 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
   font-weight: normal;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  background-color: #ffd370;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+:root {
+  --bg: #ffd370; /* 淺黃底 */
+  --text: #2b2b2b; /* 主要文字 */
+  --muted: #777; /* 次要文字 */
+  --input-bg: #fff;
+  --input-border: #e5e5e5;
+  --btn: #2f2f2f; /* 按鈕深色 */
+  --btn-text: #fff;
+  --radius: 10px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+/* -------------- 分隔線 ----------------- */
+
+@media screen and (width >= 768px) {
+  /* 平板>=768 */
+}
+
+@media screen and (width >= 1024px) {
+  /* 筆電>=1024 */
+}
+
+@media screen and (width >= 1200px) {
+  /* 桌機>=1200 */
+  .signup {
+    width: 20%;
+    position: relative;
+    right: 0;
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+@media screen and (width >= 1440px) {
+  /* 大螢幕>=1440 */
+  .signup {
+    width: 20%;
+    position: relative;
+    right: 0;
   }
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+/* -------------- 分隔線 ----------------- */
+
+button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.signup-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.signup-container > .side {
+  padding: 40px 20px;
+  color: var(--text);
+}
+
+.todoImg {
+  width: 30%;
+  height: max-content;
+}
+
+/* 註冊功能 */
+
+.signup-form > input {
+  font-weight: normal;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 4px 0;
+}
+
+.signup-form > button {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.signup-form > p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 8px;
+}
+.signup-form > span {
+  margin: 4px 0 16px 0;
+  color: #d87355;
+  font-size: 0.875rem;
+}
+
+/* 登入功能 */
+.signin {
+  display: none;
+}
+
+/* 登出功能 */
+.logout {
+  display: none;
 }

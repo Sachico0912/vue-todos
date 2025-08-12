@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 const api = 'https://todolist-api.hexschool.io/'
+const todoImg = 'src/assets/todo.png'
 
 const signUpField = ref({
   email: '',
@@ -41,27 +42,38 @@ const signIn = async () => {
 }
 </script>
 <template>
-  <h2>待辦</h2>
-  <h2>註冊功能</h2>
-  <input type="email" placeholder="電子郵件" v-model="signUpField.email" /><br />
-  <input type="password" placeholder="密碼" v-model="signUpField.password" /><br />
-  <input type="text" placeholder="暱稱" v-model="signUpField.nickname" /><br />
-  <button type="button" @click="signUp">註冊</button><br />
-  {{ signUpField }}
-  <hr />
-  <b>Uid:{{ signUpRes }}</b>
+  <div class="signup-container">
+    <div class="side">
+      <img class="todoImg" :src="todoImg" alt="代辦圖片" />
+    </div>
+    <div class="side">
+      <div class="signup-form">
+        <h2>立即開始你的代辦事項</h2>
+        <p>Email</p>
+        <input type="email" placeholder="請輸入 Email" v-model="signUpField.email" /><br />
+        <span>*此欄位不可為空</span>
+        <p>密碼</p>
+        <input type="password" placeholder="密碼" v-model="signUpField.password" /><br />
+        <p>暱稱</p>
+        <input type="text" placeholder="暱稱" v-model="signUpField.nickname" /><br />
+        <button type="button" @click="signUp">註冊</button><br />
+        {{ signUpField }}
+        <b>Uid:{{ signUpRes }}</b>
+      </div>
+    </div>
+  </div>
 
-  <hr />
-  <br />
-  <h2>登入功能</h2>
-  <input type="email" placeholder="電子郵件" v-model="signInField.email" />
-  <input type="password" placeholder="密碼" v-model="signInField.password" />
-  <button type="button" @click="signIn">登入</button>
-  {{ signInField }}
-  <hr />
-  <b>token: {{ signInRes }}</b>
-  <br />
-  <h2>登出功能</h2>
-  <button type="button">登出</button>
+  <div class="signin">
+    <h2>登入功能</h2>
+    <input type="email" placeholder="電子郵件" v-model="signInField.email" />
+    <input type="password" placeholder="密碼" v-model="signInField.password" />
+    <button type="button" @click="signIn">登入</button>
+    {{ signInField }}
+    <hr />
+    <b>token: {{ signInRes }}</b>
+  </div>
+  <div class="logout">
+    <button type="button" @click="logOut">登出</button>
+  </div>
 </template>
 <style></style>
