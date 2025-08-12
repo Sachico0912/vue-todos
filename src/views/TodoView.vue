@@ -48,7 +48,7 @@ const signIn = async () => {
     </div>
     <div class="side">
       <div class="signup-form">
-        <h2>立即開始你的代辦事項</h2>
+        <h2>立即開始</h2>
         <p>Email</p>
         <input type="email" placeholder="請輸入 Email" v-model="signUpField.email" /><br />
         <span>*此欄位不可為空</span>
@@ -56,9 +56,10 @@ const signIn = async () => {
         <input type="password" placeholder="密碼" v-model="signUpField.password" /><br />
         <p>暱稱</p>
         <input type="text" placeholder="暱稱" v-model="signUpField.nickname" /><br />
-        <button type="button" @click="signUp">註冊</button><br />
+
+        <button class="signup-btn" type="button" @click="signUp">註冊</button>
+
         {{ signUpField }}
-        <b>Uid:{{ signUpRes }}</b>
       </div>
     </div>
   </div>
