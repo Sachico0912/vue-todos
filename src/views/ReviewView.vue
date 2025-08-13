@@ -99,9 +99,9 @@ const menu = ref([
           <td>{{ item.description }}</td>
           <td>${{ item.price }}</td>
           <td>
-            <button type="button">+</button>
-            {{ item.quantity }}
             <button type="button">-</button>
+            {{ item.quantity }}
+            <button type="button">+</button>
           </td>
         </tr>
       </tbody>

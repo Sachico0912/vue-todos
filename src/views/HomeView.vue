@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <button type="button">登入</button>
+  <h1>首頁</h1>
 </template>

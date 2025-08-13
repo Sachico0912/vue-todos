@@ -47,34 +47,33 @@ const signIn = async () => {
       <img class="todoImg" :src="todoImg" alt="代辦圖片" />
     </div>
     <div class="side">
-      <div class="signup-form">
-        <h2>立即開始</h2>
-        <p>Email</p>
-        <input type="email" placeholder="請輸入 Email" v-model="signUpField.email" /><br />
-        <span>*此欄位不可為空</span>
-        <p>密碼</p>
-        <input type="password" placeholder="密碼" v-model="signUpField.password" /><br />
-        <p>暱稱</p>
-        <input type="text" placeholder="暱稱" v-model="signUpField.nickname" /><br />
-
-        <button class="signup-btn" type="button" @click="signUp">註冊</button>
-
-        {{ signUpField }}
+      <div class="control_form">
+        <h2>登入功能</h2>
+        <input type="email" placeholder="電子郵件" v-model="signInField.email" />
+        <input type="password" placeholder="密碼" v-model="signInField.password" />
+        <button type="button" class="btn" @click="signIn">登入</button>
+        {{ signInField }}
+        <b>token: {{ signInRes }}</b>
       </div>
     </div>
   </div>
+  <div class="control_form">
+    <h2>註冊帳號</h2>
+    <p>Email</p>
+    <input type="email" placeholder="請輸入 Email" v-model="signUpField.email" /><br />
+    <span>*此欄位不可為空</span>
+    <p>密碼</p>
+    <input type="password" placeholder="密碼" v-model="signUpField.password" /><br />
+    <p>暱稱</p>
+    <input type="text" placeholder="暱稱" v-model="signUpField.nickname" /><br />
 
-  <div class="signin">
-    <h2>登入功能</h2>
-    <input type="email" placeholder="電子郵件" v-model="signInField.email" />
-    <input type="password" placeholder="密碼" v-model="signInField.password" />
-    <button type="button" @click="signIn">登入</button>
-    {{ signInField }}
-    <hr />
-    <b>token: {{ signInRes }}</b>
+    <button class="btn" type="button" @click="signUp">註冊</button>
+    {{ signUpField }}
+    <b>uid: {{ signUpRes }}</b>
   </div>
+
   <div class="logout">
-    <button type="button" @click="logOut">登出</button>
+    <button type="button" class="btn" @click="logOut">登出</button>
   </div>
 </template>
 <style></style>

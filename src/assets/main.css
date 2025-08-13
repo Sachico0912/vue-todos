@@ -28,6 +28,84 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+button {
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 8rem;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-content: center;
+  align-items: center;
+}
+
+.container > .side {
+  padding: 0 50px;
+  color: var(--text);
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todoImg {
+  width: 60%;
+  height: max-content;
+  align-self: center;
+}
+
+/* 註冊功能 */
+.control_form {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input {
+  font-weight: normal;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  width: 50%;
+  margin: 0 0 1rem 0;
+}
+
+.control_form > p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.control_form > span {
+  position: relative;
+  top: -2rem;
+  color: #d87355;
+  font-size: 0.875rem;
+}
+
+.btn {
+  display: inline-block;
+  max-width: 8rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--btn);
+}
+/* 登入功能 */
+.signin {
+}
+
+/* 登出功能 */
+.logout {
+  display: none;
+}
+
 /* -------------- 分隔線 ----------------- */
 @media screen and (width < 768px) {
   /* 手機<768 */
@@ -72,82 +150,3 @@ h2 {
 }
 
 /* -------------- 分隔線 ----------------- */
-
-button {
-  padding: 10px 10px;
-  border-radius: 5px;
-  background-color: #333333;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width: 8rem;
-}
-
-.signup-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  align-content: center;
-  align-items: center;
-}
-
-.signup-container > .side {
-  padding: 0 50px;
-  color: var(--text);
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.todoImg {
-  width: 60%;
-  height: max-content;
-  align-self: center;
-}
-
-/* 註冊功能 */
-.signup-form {
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.signup-form > input {
-  font-weight: normal;
-  border: none;
-  border-radius: 10px;
-  padding: 1rem 1rem;
-  width: 50%;
-  margin: 0 0 1rem 0;
-}
-
-.signup-form > p {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.signup-form > span {
-  position: relative;
-  top: -2rem;
-  color: #d87355;
-  font-size: 0.875rem;
-}
-
-.signup-btn {
-  display: inline-block;
-  max-width: 8rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--btn);
-}
-/* 登入功能 */
-.signin {
-  display: none;
-}
-
-/* 登出功能 */
-.logout {
-  display: none;
-}
