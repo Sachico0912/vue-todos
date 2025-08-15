@@ -76,4 +76,5 @@ const signIn = async () => {
     <button type="button" class="btn" @click="logOut">登出</button>
   </div>
 </template>
+
 <style></style>

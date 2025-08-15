@@ -9,7 +9,11 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/week1">Week1</RouterLink>
       <RouterLink to="/review">Review</RouterLink>
       <RouterLink to="/Week2">Week2</RouterLink>
+      <RouterLink to="/review2">Reivew2</RouterLink>
     </nav>
+    <div class="container">
+      <h1>Vue Todos</h1>
+    </div>
   </div>
 
   <RouterView />
