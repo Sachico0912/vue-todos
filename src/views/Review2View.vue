@@ -60,9 +60,27 @@ const checkOut = async () => {
   }
 }
 
-//---------------登出功能 ------------------//
+//---------------登出功能(未完成) ------------------//
 
-const signOut = async () => {}
+const signOut = async () => {
+  try {
+    const response = await axios.post(
+      `${api}users/sign_out`,
+      {},
+      {
+        headers: {
+          Authorization: token.value,
+        },
+      },
+    )
+    alert('登出成功')
+    token.value = ''
+  } catch (error) {
+    console.log(error)
+
+    alert('登出失敗: ' + error.message)
+  }
+}
 </script>
 
 <template>
