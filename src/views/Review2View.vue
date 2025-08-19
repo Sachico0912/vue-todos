@@ -64,21 +64,16 @@ const checkOut = async () => {
 
 const signOut = async () => {
   try {
-    const response = await axios.post(
-      `${api}users/sign_out`,
-      {},
-      {
-        headers: {
-          Authorization: token.value,
-        },
+    const res = await axios.post(`${api}users/sign_out`, {
+      headers: {
+        Authorization: token.value,
       },
-    )
-    alert('登出成功')
-    token.value = ''
+    })
+    console.log(res.data.token)
+    // res.data.token = ''
+    console.log('登出成功', res)
   } catch (error) {
-    console.log(error)
-
-    alert('登出失敗: ' + error.message)
+    console.log('登出失敗', error)
   }
 }
 </script>

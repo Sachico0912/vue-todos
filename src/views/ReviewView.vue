@@ -73,12 +73,38 @@ const menu = ref([
     description: '一杯優雅的紅酒，帶有濃郁的果香和木質香氣，適合搭配美食。',
   },
 ])
+const newName = ref('')
+const newDescription = ref('')
+const newPrice = ref(0)
+const newQuantity = ref(0)
+
+function addItem() {
+  console.log('addItem', menu.value)
+  menu.value.push({
+    id: menu.value.length + 1,
+    name: newName.value,
+    price: newPrice.value,
+    quantity: newQuantity.value,
+    description: newDescription.value,
+  })
+  newName.value = ''
+  newDescription.value = ''
+  newPrice.value = 0
+  newQuantity.value = 0
+}
 </script>
 
 <template>
   <div class="review-view">
     <h1>Review CRUD</h1>
     <p>Consistent practice leads to success.</p>
+  </div>
+  <div>
+    <input type="text" placeholder="輸入品項名稱" v-model="newName" />
+    <input type="text" placeholder="輸入產品描述" v-model="newDescription" />
+    <input type="number" placeholder="輸入價格" v-model="newPrice" />
+    <input type="number" placeholder="輸入庫存" v-model="newQuantity" />
+    <button type="button" @click="addItem">新增一筆資料</button>
   </div>
   <div class="menu">
     Menu / 菜單
@@ -90,18 +116,22 @@ const menu = ref([
           <th>產品描述</th>
           <th>價格</th>
           <th>庫存</th>
+          <th>清除資料</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in menu" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.description }}</td>
-          <td>${{ item.price }}</td>
+        <tr v-for="product in menu" :key="product.id">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>${{ product.price }}</td>
           <td>
             <button type="button">-</button>
-            {{ item.quantity }}
+            {{ product.quantity }}
             <button type="button">+</button>
+          </td>
+          <td>
+            <button type="button">刪除</button>
           </td>
         </tr>
       </tbody>
