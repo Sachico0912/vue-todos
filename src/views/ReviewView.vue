@@ -73,6 +73,8 @@ const menu = ref([
     description: '一杯優雅的紅酒，帶有濃郁的果香和木質香氣，適合搭配美食。',
   },
 ])
+
+// ---------------新增功能 ------------------//
 const newName = ref('')
 const newDescription = ref('')
 const newPrice = ref(0)
@@ -91,6 +93,13 @@ function addItem() {
   newDescription.value = ''
   newPrice.value = 0
   newQuantity.value = 0
+}
+
+// ---------------刪除功能 ------------------//
+function delItem(id) {
+  console.log(id)
+  menu.value = menu.value.filter((product) => product.id !== id)
+  //回傳新陣列，不是被選到的 id 就保留
 }
 </script>
 
@@ -131,7 +140,7 @@ function addItem() {
             <button type="button">+</button>
           </td>
           <td>
-            <button type="button">刪除</button>
+            <button type="button" @click="delItem(product.id)">刪除</button>
           </td>
         </tr>
       </tbody>
