@@ -101,6 +101,26 @@ function delItem(id) {
   menu.value = menu.value.filter((product) => product.id !== id)
   //回傳新陣列，不是被選到的 id 就保留
 }
+
+// ---------------加減功能 ------------------//
+function plus(product) {
+  // console.log('觸發plus')
+  // console.log(typeof product)
+  // console.log(product.quantity)
+  if (product.quantity >= 0) {
+    product.quantity++
+  }
+}
+
+function minus(product) {
+  // console.log('觸發minus')
+  // console.log(product.quantity)
+  if (product.quantity > 0) {
+    product.quantity--
+  } else {
+    alert('庫存不能小於0')
+  }
+}
 </script>
 
 <template>
@@ -135,9 +155,9 @@ function delItem(id) {
           <td>{{ product.description }}</td>
           <td>${{ product.price }}</td>
           <td>
-            <button type="button">-</button>
+            <button type="button" @click="minus(product)">-</button>
             {{ product.quantity }}
-            <button type="button">+</button>
+            <button type="button" @click="plus(product)">+</button>
           </td>
           <td>
             <button type="button" @click="delItem(product.id)">刪除</button>
