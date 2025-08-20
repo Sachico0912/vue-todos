@@ -80,7 +80,7 @@ const newDescription = ref('')
 const newPrice = ref(0)
 const newQuantity = ref(0)
 
-function addItem() {
+function addProduct() {
   console.log('addItem', menu.value)
   menu.value.push({
     id: menu.value.length + 1,
@@ -121,6 +121,16 @@ function minus(product) {
     alert('庫存不能小於0')
   }
 }
+
+// ---------------編輯功能 ------------------//
+const editName = ref('')
+const editDescription = ref('')
+const editPrice = ref(0)
+const editQuantity = ref(0)
+
+function updateProduct(menu) {
+  console.log('updateProduct', typeof menu, menu)
+}
 </script>
 
 <template>
@@ -129,11 +139,19 @@ function minus(product) {
     <p>Consistent practice leads to success.</p>
   </div>
   <div>
-    <input type="text" placeholder="輸入品項名稱" v-model="newName" />
-    <input type="text" placeholder="輸入產品描述" v-model="newDescription" />
-    <input type="number" placeholder="輸入價格" v-model="newPrice" />
-    <input type="number" placeholder="輸入庫存" v-model="newQuantity" />
-    <button type="button" @click="addItem">新增一筆資料</button>
+    <h2>新增區</h2>
+    品項：<input type="text" placeholder="輸入品項名稱" v-model="newName" /> 描述：<input
+      type="text"
+      placeholder="輸入產品描述"
+      v-model="newDescription"
+    />
+    價格：<input type="number" placeholder="輸入價格" v-model="newPrice" /> 數量：<input
+      type="number"
+      placeholder="輸入庫存"
+      v-model="newQuantity"
+    />
+    <button type="button" @click="addProduct">新增一筆資料</button>
+    <hr />
   </div>
   <div class="menu">
     Menu / 菜單
@@ -165,6 +183,23 @@ function minus(product) {
         </tr>
       </tbody>
     </table>
+  </div>
+  <hr />
+  <div>
+    <h2>編輯區</h2>
+    <div>
+      品項：<input type="text" v-model="editName" placeholder="輸入品項名稱" /> 描述：<input
+        type="text"
+        v-model="editDescription"
+        placeholder="輸入產品描述"
+      />
+      價格：<input type="number" v-model="editPrice" placeholder="輸入價格" /> 數量：<input
+        type="number"
+        v-model="editQuantity"
+        placeholder="輸入庫存"
+      />
+      <button type="button" @click="updateProduct(menu)">更新資料</button>
+    </div>
   </div>
 </template>
 
