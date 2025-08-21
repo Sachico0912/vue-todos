@@ -4,7 +4,6 @@ import { ref, onMounted } from 'vue'
 const menu = ref([])
 
 onMounted(() => {
-  console.log('菜單已載入:', menu.value)
   menu.value = [
     {
       id: 1,
@@ -77,6 +76,7 @@ onMounted(() => {
       description: '一杯優雅的紅酒，帶有濃郁的果香和木質香氣，適合搭配美食。',
     },
   ]
+  console.log('菜單已載入:', menu.value)
 })
 
 // ---------------新增功能 ------------------//
@@ -133,8 +133,26 @@ const editDescription = ref('')
 const editPrice = ref(0)
 const editQuantity = ref(0)
 
+function showEdit(product, id) {
+  showEdit.value = true
+  console.log('觸發showEdit', product, id)
+  isEdit()
+}
+
+function isEdit(product, id) {
+  console.log('isEdit', product, id)
+}
+
 function updateProduct(menu) {
-  console.log('updateProduct', typeof menu, menu.value)
+  console.log('updateProduct', typeof menu, menu)
+  menu.forEach((product) => {
+    if (product.id === 1) {
+      product.name = editName.value
+      product.description = editDescription.value
+      product.price = editPrice.value
+      product.quantity = editQuantity.value
+    }
+  })
 }
 </script>
 
@@ -168,7 +186,7 @@ function updateProduct(menu) {
           <th>產品描述</th>
           <th>價格</th>
           <th>庫存</th>
-          <th>清除資料</th>
+          <th>操作資料</th>
         </tr>
       </thead>
       <tbody>
@@ -184,13 +202,14 @@ function updateProduct(menu) {
           </td>
           <td>
             <button type="button" @click="delItem(product.id)">刪除</button>
+            <button type="bitton" @click="showEdit(product, id)">編輯</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <hr />
-  <div>
+  <div v-if="showEdit ? true : false">
     <h2>編輯區</h2>
     <div>
       品項：<input type="text" v-model="editName" placeholder="輸入品項名稱" /> 描述：<input
