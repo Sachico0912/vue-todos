@@ -128,31 +128,17 @@ function minus(product) {
 }
 
 // ---------------編輯功能 ------------------//
-const editName = ref('')
-const editDescription = ref('')
-const editPrice = ref(0)
-const editQuantity = ref(0)
 
-function showEdit(product, id) {
-  showEdit.value = true
-  console.log('觸發showEdit', product, id)
-  isEdit()
-}
+const tempEdit = ref({
+  name: '',
+  description: '',
+  price: 0,
+  quantity: 0,
+})
 
-function isEdit(product, id) {
-  console.log('isEdit', product, id)
-}
-
-function updateProduct(menu) {
-  console.log('updateProduct', typeof menu, menu)
-  menu.forEach((product) => {
-    if (product.id === 1) {
-      product.name = editName.value
-      product.description = editDescription.value
-      product.price = editPrice.value
-      product.quantity = editQuantity.value
-    }
-  })
+function prepareEdit(menu) {
+  tempEdit.value = menu
+  console.log(tempEdit.value)
 }
 </script>
 
@@ -202,27 +188,23 @@ function updateProduct(menu) {
           </td>
           <td>
             <button type="button" @click="delItem(product.id)">刪除</button>
-            <button type="bitton" @click="showEdit(product, id)">編輯</button>
+            <button type="bitton" @click="prepareEdit(menu)">編輯</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <hr />
-  <div v-if="showEdit ? true : false">
+  <div>
     <h2>編輯區</h2>
     <div>
-      品項：<input type="text" v-model="editName" placeholder="輸入品項名稱" /> 描述：<input
-        type="text"
-        v-model="editDescription"
-        placeholder="輸入產品描述"
-      />
-      價格：<input type="number" v-model="editPrice" placeholder="輸入價格" /> 數量：<input
+      品項：<input type="text" v-model="tempEdit.name" /> 當前修改的值{{ tempEdit.name }} <br />
+      描述：<input type="text" v-model="tempEdit.description" /> 價格：<input
         type="number"
-        v-model="editQuantity"
-        placeholder="輸入庫存"
+        v-model="tempEdit.price"
       />
-      <button type="button" @click="updateProduct(menu)">更新資料</button>
+      數量：<input type="number" v-model="tempEdit.quantity" />
+      <button type="button" @click="updateMenu">更新資料</button>
     </div>
   </div>
 </template>
