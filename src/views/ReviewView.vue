@@ -147,6 +147,10 @@ function updateMenu() {
   menu.value[index] = tempEdit.value
   tempEdit.value = {}
 }
+
+function cancelEdit() {
+  tempEdit.value = {}
+}
 </script>
 
 <template>
@@ -202,7 +206,7 @@ function updateMenu() {
     </table>
   </div>
   <hr />
-  <div>
+  <div v-if="tempEdit.id">
     <h2>編輯區</h2>
     <div>
       品項：<input type="text" v-model="tempEdit.name" /> 當前修改的值{{ tempEdit.name }} <br />
@@ -214,8 +218,10 @@ function updateMenu() {
       數量：<input type="number" v-model="tempEdit.quantity" /> 當前修改的值{{ tempEdit.quantity }}
       <br />
       <button type="button" @click="updateMenu">更新資料</button>
+      <button type="button" @click="cancelEdit">取消編輯</button>
     </div>
   </div>
+  <div v-else></div>
 </template>
 
 <style>
