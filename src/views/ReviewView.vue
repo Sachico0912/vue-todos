@@ -137,8 +137,15 @@ const tempEdit = ref({
 })
 
 function prepareEdit(menu) {
-  tempEdit.value = menu
+  tempEdit.value = { ...menu }
   console.log(tempEdit.value)
+}
+
+function updateMenu() {
+  const index = menu.value.findIndex((product) => product.id === tempEdit.value.id)
+  // console.log('更新資料', index)
+  menu.value[index] = tempEdit.value
+  tempEdit.value = {}
 }
 </script>
 
@@ -188,7 +195,7 @@ function prepareEdit(menu) {
           </td>
           <td>
             <button type="button" @click="delItem(product.id)">刪除</button>
-            <button type="bitton" @click="prepareEdit(menu)">編輯</button>
+            <button type="bitton" @click="prepareEdit(product)">編輯</button>
           </td>
         </tr>
       </tbody>
@@ -199,11 +206,13 @@ function prepareEdit(menu) {
     <h2>編輯區</h2>
     <div>
       品項：<input type="text" v-model="tempEdit.name" /> 當前修改的值{{ tempEdit.name }} <br />
-      描述：<input type="text" v-model="tempEdit.description" /> 價格：<input
-        type="number"
-        v-model="tempEdit.price"
-      />
-      數量：<input type="number" v-model="tempEdit.quantity" />
+      描述：<input type="text" v-model="tempEdit.description" /> 當前修改的值{{
+        tempEdit.description
+      }}
+      <br />
+      價格：<input type="number" v-model="tempEdit.price" /> 當前修改的值{{ tempEdit.price }}<br />
+      數量：<input type="number" v-model="tempEdit.quantity" /> 當前修改的值{{ tempEdit.quantity }}
+      <br />
       <button type="button" @click="updateMenu">更新資料</button>
     </div>
   </div>
