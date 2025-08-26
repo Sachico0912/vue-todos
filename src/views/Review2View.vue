@@ -66,20 +66,7 @@ onMounted(async () => {
 
 //---------------登出功能(未完成) ------------------//
 
-const signOut = async () => {
-  try {
-    const res = await axios.post(`${api}users/sign_out`, {
-      headers: {
-        Authorization: token.value,
-      },
-    })
-    console.log(res.data.token)
-    // res.data.token = ''
-    console.log('登出成功', res)
-  } catch (error) {
-    console.log('登出失敗', error)
-  }
-}
+const signOut = async () => {}
 </script>
 
 <template>
