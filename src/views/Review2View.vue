@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 const api = 'https://todolist-api.hexschool.io/'
@@ -37,6 +37,8 @@ const signIn = async () => {
     const res = await axios.post(`${api}users/sign_in`, signInField.value)
     console.log(res)
     signInRes.value = '登入成功,token=' + res.data.token
+    //把登入資訊儲存到cookie
+    document.cookie = `customTodoToken=${res.data.token};path=/`
   } catch (error) {
     console.error('登入失敗:', error)
     signInRes.value = '登入失敗'
@@ -45,20 +47,22 @@ const signIn = async () => {
 
 //---------------驗證功能 ------------------//
 
-const token = ref('')
+const user = ref({
+  nickname: '',
+  uid: '',
+})
 
-const checkOut = async () => {
-  try {
-    const res = await axios.get(`${api}users/checkout`, {
-      headers: {
-        Authorization: token.value,
-      },
-    })
-    console.log('驗證成功', res)
-  } catch (error) {
-    console.error('驗證失敗', error)
-  }
-}
+onMounted(async () => {
+  const token = document.cookie.replace(/(?:(?:^|.*;\s*)customTodoToken\s*=\s*([^;]*).*$)/i, '$1')
+  console.log(token)
+  const res = await axios.get(`${api}users/checkout`, {
+    headers: {
+      Authorization: token,
+    },
+  })
+  console.log(res)
+  user.value = res.data
+})
 
 //---------------登出功能(未完成) ------------------//
 
@@ -93,8 +97,11 @@ const signOut = async () => {
   {{ signInField }}<br />
   <br /><b>登入結果: {{ signInRes }}</b>
   <h1>驗證功能</h1>
-  <input type="text" v-model="token" />
-  <button type="button" @click="checkOut">驗證</button>
+  <div v-if="user.uid">
+    <p>Uid:{{ user.uid }}</p>
+    <p>暱稱:{{ user.nickname }}</p>
+  </div>
+  <div v-else>你還沒登入!</div>
   <h1>登出功能</h1>
   <button type="button" @click="signOut">登出</button>
 </template>
