@@ -29,6 +29,11 @@ const router = createRouter({
       name: 'review2',
       component: () => import('../views/Review2View.vue'),
     },
+    {
+      path: '/Week3',
+      name: 'week3',
+      component: () => import('../views/Week3View.vue'),
+    },
   ],
 })
 
