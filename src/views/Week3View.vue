@@ -1,12 +1,17 @@
 <script setup>
 import { ref } from 'vue'
 import Card from '../components/Card.vue'
-const title = '卡片 A'
-const content = '這是內容 A'
+
+const title = ref('原始標題')
+
+const applyText = (newText) => {
+  if (!newText) return
+  title.value = newText
+}
 </script>
 
 <template>
-  <Card :title="title" :content="content" />
-  <Card :title="title" :content="content" compact />
-  <!-- 注意：presence 寫法 <Card compact /> 代表 true -->
+  <p>父層標題：{{ title }}</p>
+  <!-- 口訣：前內後外（前=emit-text，後=applyText） -->
+  <Card @emit-text="applyText" />
 </template>
