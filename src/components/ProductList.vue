@@ -5,6 +5,12 @@ const props = defineProps({
     required: true,
   },
 })
+
+const emit = defineEmits(['add-cart'])
+
+function handelAddCart(product) {
+  emit('add-cart', product)
+}
 </script>
 <template>
   <div class="col-md-8">
@@ -17,7 +23,9 @@ const props = defineProps({
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">{{ product.description }}</p>
             <p class="fw-bold text-primary">$ {{ product.price }}</p>
-            <button class="btn btn-success w-100">加入購物車</button>
+            <button class="btn btn-success w-100" @click="handelAddCart(product)">
+              加入購物車
+            </button>
           </div>
         </div>
       </div>

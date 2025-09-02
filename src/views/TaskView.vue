@@ -46,15 +46,32 @@ const products = ref([
       'https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ])
+
+//-----------------加入購物車功能-----------------//
+
+const carts = ref([])
+
+function addCart(product) {
+  console.log('add', product)
+  const exitProduct = carts.value.find((c) => c.id === product.id)
+  if (exitProduct) {
+    exitProduct.quantity++
+  } else {
+    carts.value.push({
+      ...product,
+      quantity: 1,
+    })
+  }
+}
 </script>
 <template>
   <div id="app" class="container py-4">
     <div class="row">
       <!-- 商品列表區 -->
-      <ProductList :products="products" />
+      <ProductList :products="products" @add-cart="addCart" />
 
       <!-- 購物車區 -->
-      <Cart />
+      <Cart :carts="carts" />
     </div>
 
     <!-- 通知元件 -->
