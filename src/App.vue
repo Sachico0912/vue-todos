@@ -13,12 +13,10 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/week3">Week3</RouterLink>
       <RouterLink to="/task">Task</RouterLink>
     </nav>
-    <div class="container">
-      <h1>Vue Todos</h1>
-    </div>
   </div>
-
-  <RouterView />
+  <div class="container">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
@@ -31,9 +29,13 @@ import { RouterLink, RouterView } from 'vue-router'
   gap: 1rem;
   background-color: #333;
   padding: 1rem;
+  z-index: 100;
 }
 .nav a {
   color: #fff;
   text-decoration: none;
+}
+.container {
+  margin-top: 64px;
 }
 </style>

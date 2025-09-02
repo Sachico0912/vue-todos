@@ -37,3 +37,10 @@ const showNotification = inject('showNotification')
     </div>
   </div>
 </template>
+
+<style>
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+</style>

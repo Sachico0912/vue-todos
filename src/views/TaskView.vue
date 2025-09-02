@@ -111,14 +111,3 @@ const totalPrice = computed(() => {
     <Notification />
   </div>
 </template>
-
-<style>
-body {
-  background: #f2f2f2f2;
-}
-
-.card-img-top {
-  height: 150px;
-  object-fit: cover;
-}
-</style>
