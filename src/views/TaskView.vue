@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, provide } from 'vue'
+import { ref, reactive, provide, computed } from 'vue'
 import ProductList from '@/components/ProductList.vue'
 import Cart from '@/components/Cart.vue'
 import Notification from '@/components/Notification.vue'
@@ -90,6 +90,12 @@ function showNotification(message) {
 
 provide('notificationState', notificationState)
 provide('showNotification', showNotification)
+
+//-----------------總金額-----------------//
+
+const totalPrice = computed(() => {
+  return carts.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
+})
 </script>
 <template>
   <div id="app" class="container py-4">
@@ -98,7 +104,7 @@ provide('showNotification', showNotification)
       <ProductList :products="products" @add-cart="addCart" />
 
       <!-- 購物車區 -->
-      <Cart :carts="carts" @remove-cart="removeCart" />
+      <Cart :carts="carts" @remove-cart="removeCart" :totalPrice="totalPrice" />
     </div>
 
     <!-- 通知元件 -->

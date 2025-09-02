@@ -5,6 +5,10 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
 })
 
 const emit = defineEmits(['remove-cart'])
@@ -39,6 +43,6 @@ const showNotification = inject('showNotification')
         </div>
       </li>
     </ul>
+    <div v-if="carts.length !== 0" class="text-end fw-bold">總金額:{{ totalPrice }}</div>
   </div>
-  {{ carts }}
 </template>
