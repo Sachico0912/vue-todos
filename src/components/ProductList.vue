@@ -1,4 +1,6 @@
 <script setup>
+import { inject } from 'vue'
+
 const props = defineProps({
   products: {
     type: Array,
@@ -10,7 +12,10 @@ const emit = defineEmits(['add-cart'])
 
 function handelAddCart(product) {
   emit('add-cart', product)
+  showNotification(`商品${product.name} 已加入購物車`)
 }
+
+const showNotification = inject('showNotification')
 </script>
 <template>
   <div class="col-md-8">

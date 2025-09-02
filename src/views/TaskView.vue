@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive, provide } from 'vue'
 import ProductList from '@/components/ProductList.vue'
 import Cart from '@/components/Cart.vue'
 import Notification from '@/components/Notification.vue'
@@ -70,6 +70,26 @@ function removeCart(item) {
   console.log('remove', item)
   carts.value = carts.value.filter((c) => c.id !== item.id)
 }
+
+//-----------------彈出通知功能(商品已加入購物車)-----------------//
+
+const notificationState = reactive({
+  message: '',
+  isShow: false,
+})
+
+function showNotification(message) {
+  console.log('message', message)
+  notificationState.message = message
+  notificationState.isShow = true
+
+  setTimeout(() => {
+    notificationState.isShow = false
+  }, 1500)
+}
+
+provide('notificationState', notificationState)
+provide('showNotification', showNotification)
 </script>
 <template>
   <div id="app" class="container py-4">
