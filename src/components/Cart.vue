@@ -1,4 +1,5 @@
 <script setup>
+import { inject } from 'vue'
 const props = defineProps({
   carts: {
     type: Array,
@@ -10,7 +11,10 @@ const emit = defineEmits(['remove-cart'])
 
 function handelRemoveCart(item) {
   emit('remove-cart', item)
+  showNotification(`商品${item.name} 已移除`)
 }
+
+const showNotification = inject('showNotification')
 </script>
 
 <template>
