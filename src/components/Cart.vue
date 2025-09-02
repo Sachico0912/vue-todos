@@ -5,6 +5,12 @@ const props = defineProps({
     required: true,
   },
 })
+
+const emit = defineEmits(['remove-cart'])
+
+function handelRemoveCart(item) {
+  emit('remove-cart', item)
+}
 </script>
 
 <template>
@@ -23,7 +29,9 @@ const props = defineProps({
         </div>
         <div>
           <span class="text-muted">$ {{ item.quantity * item.price }}</span>
-          <button class="btn btn-sm btn-outline-danger ms-2">移除</button>
+          <button class="btn btn-sm btn-outline-danger ms-2" @click="handelRemoveCart(item)">
+            移除
+          </button>
         </div>
       </li>
     </ul>

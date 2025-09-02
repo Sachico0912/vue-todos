@@ -63,6 +63,13 @@ function addCart(product) {
     })
   }
 }
+
+//-----------------移除購物車功能-----------------//
+
+function removeCart(item) {
+  console.log('remove', item)
+  carts.value = carts.value.filter((c) => c.id !== item.id)
+}
 </script>
 <template>
   <div id="app" class="container py-4">
@@ -71,7 +78,7 @@ function addCart(product) {
       <ProductList :products="products" @add-cart="addCart" />
 
       <!-- 購物車區 -->
-      <Cart :carts="carts" />
+      <Cart :carts="carts" @remove-cart="removeCart" />
     </div>
 
     <!-- 通知元件 -->
