@@ -11,6 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/week2">Week2</RouterLink>
       <RouterLink to="/review2">Reivew2</RouterLink>
       <RouterLink to="/week3">Week3</RouterLink>
+      <RouterLink to="/task">Task</RouterLink>
     </nav>
     <div class="container">
       <h1>Vue Todos</h1>
