@@ -3,17 +3,20 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div>
-    <nav class="nav">
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/week1">Week1</RouterLink>
-      <RouterLink to="/review">Review</RouterLink>
-      <RouterLink to="/week2">Week2</RouterLink>
-      <RouterLink to="/review2">Reivew2</RouterLink>
-      <RouterLink to="/week3">Week3</RouterLink>
-      <RouterLink to="/task">Task</RouterLink>
-    </nav>
-  </div>
+  <header>
+    <div>
+      <nav class="nav">
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/week1">Week1</RouterLink>
+        <RouterLink to="/review">Review</RouterLink>
+        <RouterLink to="/week2">Week2</RouterLink>
+        <RouterLink to="/review2">Reivew2</RouterLink>
+        <RouterLink to="/week3">Week3</RouterLink>
+        <RouterLink to="/task">Task</RouterLink>
+        <RouterLink to="/week4">Week4</RouterLink>
+      </nav>
+    </div>
+  </header>
   <div class="container">
     <RouterView />
   </div>
@@ -37,5 +40,7 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 .container {
   margin-top: 64px;
+  border: 5px solid #555;
+  padding: 10px;
 }
 </style>
